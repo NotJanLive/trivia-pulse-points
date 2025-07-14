@@ -20,8 +20,8 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
     e.preventDefault();
     if (!username.trim() || !password.trim()) {
       toast({
-        title: "Missing Information",
-        description: "Please enter both username and password",
+        title: "Fehlende Angaben",
+        description: "Bitte geben Sie Benutzername und Passwort ein",
         variant: "destructive",
       });
       return;
@@ -34,8 +34,8 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
       const isAdmin = password === "admin123";
       onLogin(username.trim(), isAdmin);
       toast({
-        title: isAdmin ? "Admin Login Successful" : "Login Successful",
-        description: `Welcome ${username}! ${isAdmin ? "You have admin privileges." : "Ready to compete!"}`,
+        title: isAdmin ? "Admin-Anmeldung erfolgreich" : "Anmeldung erfolgreich",
+        description: `Willkommen ${username}! ${isAdmin ? "Sie haben Administrator-Rechte." : "Bereit zum Wettkampf!"}`,
       });
       setIsLoading(false);
     }, 1000);
@@ -53,26 +53,26 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
             Quiz Show Buzzer
           </h1>
           <p className="text-muted-foreground text-lg">
-            Enter the arena of knowledge
+            Betreten Sie die Arena des Wissens
           </p>
         </div>
 
         {/* Login Card */}
         <Card className="bg-gradient-card border-border shadow-card">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl text-foreground">Join the Game</CardTitle>
+            <CardTitle className="text-2xl text-foreground">Am Spiel teilnehmen</CardTitle>
             <CardDescription className="text-muted-foreground">
-              Enter your credentials to participate in the quiz show
+              Geben Sie Ihre Anmeldedaten ein, um an der Quiz-Show teilzunehmen
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-foreground">Username</Label>
+                <Label htmlFor="username" className="text-foreground">Benutzername</Label>
                 <Input
                   id="username"
                   type="text"
-                  placeholder="Enter your username"
+                  placeholder="Benutzername eingeben"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   className="bg-background/50 border-border text-foreground"
@@ -81,11 +81,11 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-foreground">Password</Label>
+                <Label htmlFor="password" className="text-foreground">Passwort</Label>
                 <Input
                   id="password"
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder="Passwort eingeben"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="bg-background/50 border-border text-foreground"
@@ -98,7 +98,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
                 className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold py-3 transition-all duration-200 hover:scale-105"
                 disabled={isLoading}
               >
-                {isLoading ? "Joining..." : "Enter Game"}
+                {isLoading ? "Anmelden..." : "Spiel betreten"}
               </Button>
             </form>
 
@@ -106,12 +106,12 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
             <div className="mt-6 p-4 bg-background/30 rounded-lg">
               <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2">
                 <Users className="w-4 h-4" />
-                Quick Access
+                Schnellzugang
               </h3>
               <div className="space-y-1 text-sm text-muted-foreground">
-                <p>• Use password "admin123" for admin access</p>
-                <p>• Any other password for contestant access</p>
-                <p>• Username becomes your display name</p>
+                <p>• Passwort "admin123" für Administrator-Zugang</p>
+                <p>• Beliebiges anderes Passwort für Teilnehmer-Zugang</p>
+                <p>• Benutzername wird als Anzeigename verwendet</p>
               </div>
             </div>
           </CardContent>
@@ -121,15 +121,15 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
         <div className="mt-8 grid grid-cols-3 gap-4 text-center">
           <div className="p-3 bg-gradient-card rounded-lg shadow-card animate-bounce-subtle">
             <Zap className="w-6 h-6 text-primary mx-auto mb-2" />
-            <p className="text-xs text-muted-foreground">Fast Buzzer</p>
+            <p className="text-xs text-muted-foreground">Schneller Buzzer</p>
           </div>
           <div className="p-3 bg-gradient-card rounded-lg shadow-card animate-bounce-subtle" style={{ animationDelay: '0.2s' }}>
             <Trophy className="w-6 h-6 text-secondary mx-auto mb-2" />
-            <p className="text-xs text-muted-foreground">Live Scoring</p>
+            <p className="text-xs text-muted-foreground">Live-Punktzahl</p>
           </div>
           <div className="p-3 bg-gradient-card rounded-lg shadow-card animate-bounce-subtle" style={{ animationDelay: '0.4s' }}>
             <Users className="w-6 h-6 text-accent mx-auto mb-2" />
-            <p className="text-xs text-muted-foreground">Multiplayer</p>
+            <p className="text-xs text-muted-foreground">Mehrspieler</p>
           </div>
         </div>
       </div>

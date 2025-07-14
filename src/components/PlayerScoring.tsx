@@ -47,7 +47,7 @@ export default function PlayerScoring({ players, onUpdateScore }: PlayerScoringP
       <CardHeader>
         <CardTitle className="text-lg text-foreground flex items-center gap-2">
           <Award className="w-5 h-5 text-secondary" />
-          Player Scoring
+          Spieler-Bewertung
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -69,20 +69,20 @@ export default function PlayerScoring({ players, onUpdateScore }: PlayerScoringP
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground">{player.name}</h4>
-                  <p className="text-sm text-muted-foreground">Current: {player.score} points</p>
+                  <p className="text-sm text-muted-foreground">Aktuell: {player.score} Punkte</p>
                 </div>
               </div>
               
               {index === 0 && (
                 <Badge className="bg-gradient-secondary text-secondary-foreground animate-winner-glow">
-                  Leader
+                  Führender
                 </Badge>
               )}
             </div>
 
             {/* Quick Adjust Buttons */}
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-sm text-muted-foreground w-16">Quick:</span>
+              <span className="text-sm text-muted-foreground w-16">Schnell:</span>
               <Button
                 size="sm"
                 onClick={() => quickAdjustScore(player, -10)}
@@ -134,10 +134,10 @@ export default function PlayerScoring({ players, onUpdateScore }: PlayerScoringP
 
             {/* Custom Score Input */}
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground w-16">Set to:</span>
+              <span className="text-sm text-muted-foreground w-16">Setzen:</span>
               <Input
                 type="text"
-                placeholder="Enter score"
+                placeholder="Punktzahl eingeben"
                 value={customScores[player.id] || ''}
                 onChange={(e) => handleCustomScoreChange(player.id, e.target.value)}
                 className="flex-1 bg-background/50 border-border text-foreground"
@@ -154,19 +154,19 @@ export default function PlayerScoring({ players, onUpdateScore }: PlayerScoringP
                 className="bg-gradient-primary hover:opacity-90 text-primary-foreground"
               >
                 <Target className="w-3 h-3 mr-1" />
-                Set
+                Setzen
               </Button>
             </div>
           </div>
         ))}
 
         <div className="text-sm text-muted-foreground bg-background/30 p-3 rounded-lg">
-          <p className="font-semibold mb-1">Scoring Guidelines:</p>
+          <p className="font-semibold mb-1">Bewertungsrichtlinien:</p>
           <ul className="space-y-1">
-            <li>• Award 5-10 points for correct answers</li>
-            <li>• Award 25+ points for difficult questions</li>
-            <li>• Deduct points for wrong answers if needed</li>
-            <li>• Use "Set to" for precise score adjustments</li>
+            <li>• 5-10 Punkte für richtige Antworten vergeben</li>
+            <li>• 25+ Punkte für schwierige Fragen vergeben</li>
+            <li>• Bei Bedarf Punkte für falsche Antworten abziehen</li>
+            <li>• "Setzen" für präzise Punkteanpassungen verwenden</li>
           </ul>
         </div>
       </CardContent>

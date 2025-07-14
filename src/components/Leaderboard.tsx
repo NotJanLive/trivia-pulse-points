@@ -53,7 +53,7 @@ export default function Leaderboard({ players, currentUser }: LeaderboardProps) 
       <CardHeader>
         <CardTitle className="text-lg text-foreground flex items-center gap-2">
           <Trophy className="w-5 h-5 text-secondary" />
-          Live Leaderboard
+          Live-Bestenliste
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
@@ -90,7 +90,7 @@ export default function Leaderboard({ players, currentUser }: LeaderboardProps) 
                     </span>
                     {player.name === currentUser && (
                       <Badge variant="outline" className="text-primary border-primary">
-                        You
+                        Sie
                       </Badge>
                     )}
                   </div>
@@ -111,7 +111,7 @@ export default function Leaderboard({ players, currentUser }: LeaderboardProps) 
                   {/* Last Buzz Time */}
                   {player.lastBuzzTime && (
                     <p className="text-xs text-muted-foreground">
-                      Last buzz: {new Date(player.lastBuzzTime).toLocaleTimeString()}
+                      Letzter Buzz: {new Date(player.lastBuzzTime).toLocaleTimeString()}
                     </p>
                   )}
                 </div>
@@ -125,7 +125,7 @@ export default function Leaderboard({ players, currentUser }: LeaderboardProps) 
                   }`}>
                     {player.score}
                   </div>
-                  <div className="text-xs text-muted-foreground">points</div>
+                  <div className="text-xs text-muted-foreground">Punkte</div>
                 </div>
               </div>
             </div>
@@ -134,21 +134,21 @@ export default function Leaderboard({ players, currentUser }: LeaderboardProps) 
             {index === 0 && (
               <div className="mt-2 text-center">
                 <Badge className="bg-gradient-secondary text-secondary-foreground animate-winner-glow">
-                  🏆 Leading the Pack!
+                  🏆 Führt das Feld an!
                 </Badge>
               </div>
             )}
             {index === 1 && player.score > 0 && (
               <div className="mt-2 text-center">
                 <Badge variant="secondary" className="bg-gray-400 text-gray-900">
-                  🥈 Close Second!
+                  🥈 Knapp dahinter!
                 </Badge>
               </div>
             )}
             {index === 2 && player.score > 0 && (
               <div className="mt-2 text-center">
                 <Badge variant="outline" className="border-orange-500 text-orange-500">
-                  🥉 Bronze Position!
+                  🥉 Bronze-Position!
                 </Badge>
               </div>
             )}
@@ -158,7 +158,7 @@ export default function Leaderboard({ players, currentUser }: LeaderboardProps) 
         {players.length === 0 && (
           <div className="text-center py-8 text-muted-foreground">
             <Trophy className="w-12 h-12 mx-auto mb-3 opacity-50" />
-            <p>No players yet. Waiting for contestants to join...</p>
+            <p>Noch keine Spieler. Warten auf Teilnehmer...</p>
           </div>
         )}
 
@@ -169,13 +169,13 @@ export default function Leaderboard({ players, currentUser }: LeaderboardProps) 
               <div className="text-lg font-bold text-foreground">
                 {players.length}
               </div>
-              <div className="text-xs text-muted-foreground">Active Players</div>
+              <div className="text-xs text-muted-foreground">Aktive Spieler</div>
             </div>
             <div>
               <div className="text-lg font-bold text-foreground">
                 {Math.max(...players.map(p => p.score), 0)}
               </div>
-              <div className="text-xs text-muted-foreground">High Score</div>
+              <div className="text-xs text-muted-foreground">Höchste Punktzahl</div>
             </div>
           </div>
         </div>
