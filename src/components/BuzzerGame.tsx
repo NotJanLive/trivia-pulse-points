@@ -97,9 +97,11 @@ export default function BuzzerGame({ currentUser, isAdmin, onLogout }: BuzzerGam
     });
   };
 
-  const winner = players.reduce((prev, current) => 
-    prev.score > current.score ? prev : current
-  );
+  const winner = players.length > 0 
+    ? players.reduce((prev, current) => 
+        prev.score > current.score ? prev : current
+      )
+    : { id: '', name: 'Keine Spieler', score: 0 };
 
   return (
     <div className="min-h-screen bg-gradient-background p-4">
@@ -276,10 +278,13 @@ export default function BuzzerGame({ currentUser, isAdmin, onLogout }: BuzzerGam
                 </div>
                 <h3 className="text-xl font-bold text-foreground">{winner.name}</h3>
                 <p className="text-2xl font-bold text-secondary">{winner.score} Punkte</p>
-                {winner.name === currentUser && !isAdmin && (
+                {winner.name === currentUser && !isAdmin && winner.id !== '' && (
                   <Badge className="mt-2 bg-gradient-secondary text-secondary-foreground">
                     Das sind Sie! 🎉
                   </Badge>
+                )}
+                {winner.id === '' && (
+                  <p className="text-sm text-muted-foreground mt-2">Warten auf Spieler...</p>
                 )}
               </div>
             </CardContent>
